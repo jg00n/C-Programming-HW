@@ -57,3 +57,4 @@ Each time the program runs, it should enter a loop that performs the following s
 When the user chooses to quit the program, it should display the total amount of money the machine earned.
 
 *Did not notice if this was in the same chapter, also code is essentially cleanroom code since there are no real associated examples.
+** HW-6 is essentially porting the data structure into a binary file and reusing the information from there.
