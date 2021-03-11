@@ -86,7 +86,7 @@ void ifCreate(const std::string & name,bool fExist) {
 			//Truncate is used to ensure its a clean enviroment. (Just in case)
 			File.open(name, std::ios::out | std::ios::trunc | std::ios::binary);
 			for (size_t i = 0; i < (size_t)SIZE; i++) {
-				File.write((char*) &defaultval[i], sizeof(drinkMachine));
+				File.write(reinterpret_cast<char*>(&defaultval[i]), sizeof(drinkMachine));
 			}
 			//Close file. Upon errors, terminate application.
 			File.close();
@@ -104,7 +104,7 @@ void ifRead(const std::string& File, drinkMachine *& content, const int SIZE) {
 	//Occurs while reading a file. No checks implemented here since the prior functions take care of it.
 	std::ifstream inFile(File, std::ios::in | std::ios::binary);
 	for (size_t i = 0; i < (size_t)SIZE; i++) {
-		inFile.read((char*) & content[i], sizeof(drinkMachine));
+		inFile.read(reinterpret_cast<char*>(& content[i]), sizeof(drinkMachine));
 	
 	}
 	//Close file. Upon errors, terminate application.
@@ -121,7 +121,7 @@ void ofWrite(const std::string& File, drinkMachine*& content, const int SIZE) {
 	//Truncate is used to ensure its a clean enviroment. (Just in case) (Duplicate)
 	std::ofstream inFile(File, std::ios::out | std::ios::trunc | std::ios::binary);
 	for (size_t i = 0; i < (size_t)SIZE; i++) {
-		inFile.write((char*)&content[i], sizeof(drinkMachine));
+		inFile.write(reinterpret_cast<char*>(&content[i]), sizeof(drinkMachine));
 	}
 	//Close file. Upon errors, terminate application.
 	inFile.close();
