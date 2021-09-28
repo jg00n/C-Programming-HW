@@ -17,7 +17,7 @@
 *    	Demonstrate the class and every function with a program. Make sure the object of the class in the demonstration has at least 5 elements by the time it ends.
 *
 *    Jonathan Goon
-*    4 / 25 / 21
+*    9 / 28 / 21
 *    Honor Code : "I have neither given nor received unauthorized aid in completing this work,
 *    nor have I presented someone else's work as my own."
 *
@@ -32,8 +32,9 @@ int main() {
 	// check for the append function    
 	Message.Show("\nTest append() function...");
 	for (int i = 0; i < 5; i++) {
-		LList.append(rand()% i +1 );
-		Message.Show("Appended ", i);
+		int temp = rand() % 5 + 1;
+		LList.append(temp);
+		Message.Show("Appended ", temp);
 		LList.print();
 	}
 
@@ -48,6 +49,14 @@ int main() {
 		LList.print();
 		x++;
 	}
+	Message.Show("\n Finding 5...");
+		bool result =LList.search(5);
+		Message.Show("Results: ",result);
+		LList.search_adv(5);
+
+		Message.Show("\n Finding 20...");
+		result = LList.search(20);
+		Message.Show("Results: ",result);
 
 	Message.Show("\nTest insertAt(5,21) outside of list.");
  	LList.insertAt(5, 21);
@@ -56,11 +65,15 @@ int main() {
 	// check for the delete function    
 	Message.Show("\nTest Delete() function...");
 	for (int i = 0; i < 4; i++) {
-		LList.Delete(i);
-		Message.Show("Deleted ", i);
+		int temp = rand() % 5 + 1;
+		LList.Delete(temp);
+		Message.Show("Deleted ", temp);
 		LList.print();
 	}
 
+	Message.Show("\nTesting sort function...");
+	LList.sort();
+	LList.print();
 
 	return 0;
 }

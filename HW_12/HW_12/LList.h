@@ -170,18 +170,69 @@ public:
 
 	}
 	//Find an element within the array
-	bool search(Node* head, int x)
-	{
-		Node* current = head; // Initialize current 
+	bool search (T value) {
+		current = head;	// Initialize current 
+	
 		while (current != NULL)
 		{
-			if (current->data == x)
-				return true;
+			if (current->data == value) return true;
+
 			current = current->next;
 		}
 		return false;
 	}
+	void search_adv(T value) {
+		current = head;	//Initalize current
+		bool present = false;
+		int index = 0,counter = 0;
+		int ind_count[20] = { 0 };		//Created a fixed array for now, would be using a vector instead.
+		while (current != NULL) {
+			if (current->data == value) {
+				//int *ind_count = new int[index + 1];
+				ind_count[counter] = index;
+				counter++;
+				present = true;
+			}
+			index++;
+			current = current->next;		//Navigate to next pointer
+		}
+		
+		if (present) {
+			std::cout << " Found " << value << " at index ";
+			for (int i = 0; i < counter; i++) {
+				std::cout << ind_count[i];
+				if (counter - i == 1) { std::cout << ".\n"; }
+				else std::cout << ", ";
+			}
+			//delete[] ind_count;			//Attempted use of dynamic array.
+		}
+		else std::cout << "\""<< value << "\" was not found in the list!!\n";
+	}
 
+	void sort() {
+		current = head;
+		previous = NULL;
+		int temp;
+		if (head == NULL) {
+			return;
+		}
+		else {
+			
+			while (current != NULL) {
+				previous = current->next; //Sets previous to next pointer
+				while (previous != NULL) {
+					if (current->data > previous->data) {
+						temp = current->data;
+						current->data = previous->data;
+						previous->data = temp;
+					}
+					previous = previous->next;
+				}
+				current = current->next;
+			}
+			
+		}
+	}
 	//Print contents of the linked list.
 	void print() {
 		            

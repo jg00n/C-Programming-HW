@@ -7,8 +7,8 @@
 *	mainly with anything that uses cin / cout.
 * 
 *	Currently a WIP
-*	version 0.3
-*	4/8/2021
+*	version 0.3.1
+*	9/28/2021
 * 
 *   Honor Code: "I have neither given nor received unauthorized aid in completing this work,
 *   nor have I presented someone else's work as my own."
@@ -84,9 +84,10 @@ public:
 	}	
 
 	template <class Type>
-	void Show(std::string message, Type &value) const{
+	void Show(std::string message, Type &value , char optional =  ' ') const{
 		//Spit out message, value with newline.
-		std::cout << message << value << ":\n";
+
+		std::cout << message << value << optional << "\n";
 
 	}
 
