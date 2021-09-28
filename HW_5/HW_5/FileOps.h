@@ -34,12 +34,13 @@ void Term		(int);
 
 class fileDef {
 	public:
-		std::string name = "SodaDatabase.dat";
+		std::string name = "Classinformation.dat";
 		//const int does not work in ifCreate.
-		const int SIZE = 5;
+		const int SIZE = 100;
 };
 
 void ifInput(drinkMachine *drinkStruct) {
+
 	fileDef def;
 	bool check;
 	//Only gives T/F statement if file exists.

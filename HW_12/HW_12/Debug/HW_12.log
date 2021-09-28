@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\Computer-WS\source\repos\HW_12\HW_12\LList.h(173,1): error C2955: 'Node': use of class template requires template argument list
+C:\Users\Computer-WS\source\repos\HW_12\HW_12\LList.h(31): message : see declaration of 'Node'
+C:\Users\Computer-WS\source\repos\HW_12\HW_12\LList.h(200): message : see reference to class template instantiation 'LinkedList<T>' being compiled
