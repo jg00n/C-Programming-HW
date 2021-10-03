@@ -86,14 +86,15 @@ public:
 			while (current->next != NULL) current = current->next;
 			current->next = New;										// the next node of current will point to New.       
 		}
-
+		//Big O notation of O(N)
 	}
 	//Appends multiple values to the end of a list, requires an array size to be specified. An Overload.
 	void append(T* values, int index) {
 		for (int x = 0 ; x < index; x++) {
 			append(values[x]);
 		}
-	
+		//Big O notation of O(N).
+		//Encampsulation of the previous function leads to O(N^2).
 	}
 
 	//insert a value into the list with a specified index (value, index).
@@ -231,7 +232,7 @@ public:
 
 		}
 		return counter;
-	
+		//Big O notation of O(N).
 	}
 
 	//Sort the linked list
@@ -274,7 +275,7 @@ public:
 
 		}
 		return NULL;										//If the counter doesn't reach the index, return NULL.
-	
+		//Big O notation of O(N).
 	}
 
 	//Print contents of the linked list.            

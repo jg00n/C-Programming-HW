@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\C-Programming-HW\C_Shared_Content-Repository\Include\LList.h">
+    <ClInclude Include="..\C_Shared_Content-Repository\Include\LList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
