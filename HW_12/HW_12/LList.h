@@ -17,7 +17,11 @@
 *    	Demonstrate the class and every function with a program. Make sure the object of the class in the demonstration has at least 5 elements by the time it ends.
 *    
 *    Jonathan Goon
-*    4 / 25 / 21
+*    4 / 25 / 21 ~~~~~ For the ORIGINAL ASSIGNMENT.
+*	 10/  2 / 21 ~~~~~ Added search, advanced_search, sort, append array.
+* 
+* 
+* 
 *    Honor Code : "I have neither given nor received unauthorized aid in completing this work,
 *    nor have I presented someone else's work as my own."
 *    
@@ -41,13 +45,12 @@ public:
 template<class T>
 class LinkedList {
 private:
-
-	//Navigational pointers
-	Node<T> *head, *current, *previous, *next;
+	
+	Node<T> *head, *current, *previous, *next;							//Navigational pointers
 
 public: 
 
-	// constructor with navigational pointers initialized.
+	//Constructor with navigational pointers initialized.
 	LinkedList<T>() {
 
 		head		= NULL;
@@ -56,56 +59,60 @@ public:
 		current		= NULL;
 
 	}        
-	// destructor        
+	//Destructor        
 	~LinkedList<T>() {      
 		// make a current node pointer current initialized with head
 		current = head;		
 		Node<T>* temp;            
 	    
 		while (current != NULL) {                                
-			temp = current->next;           // store the next node into temp
-			delete current;                 // delete current node.
-			current = temp;					// assign current to next node.
+			temp = current->next;										// store the next node into temp
+			delete current;												// delete current node.
+			current = temp;												// assign current to next node.
 		}
 	}
 
-	// append(T value)
+	//Append a value to the end of the list.
 	void append(T value) {            
-		// initialize current with head.
-		current = head;            
-		// Create a new node object.
-		Node<T>* New = new Node<T>;
+		
+		current = head;													// initialize current node position with head.
+		
+		Node<T>* New = new Node<T>;										// Create a new node object.
 		New->data = value;                     
 		New->next = NULL;
 
-		// if current is NULL we are at the first node. Otherwise navigate to the next node until NULL.
-		if (current == NULL) head = New;
+		if (current == NULL) head = New;								// if current is NULL we are at the first node. Otherwise navigate to the next node until NULL.
 		else {   
 			while (current->next != NULL) current = current->next;
-			// the next node of current will point to New.          
-			current->next = New;
+			current->next = New;										// the next node of current will point to New.       
 		}
 
 	}
+	//Appends multiple values to the end of a list, requires an array size to be specified. An Overload.
+	void append(T* values, int index) {
+		for (int x = 0 ; x < index; x++) {
+			append(values[x]);
+		}
+	
+	}
 
-	// insertAt(T value, int index)
+	//insert a value into the list with a specified index (value, index).
 	void insertAt(T value, int index) {
 
-		// initialize pointers previous and current.
+		//Initialize pointers previous and current.
 		previous = NULL;
 		current = head;
 
-		// create new node object.
+		//Create new node object.
 		Node<T>* New = new Node<T>;
 		New->data = value;                        
 		
-		// cycle through the nodes until we reach the end.
-		while (current != NULL) {
-			// if index is 0 then insert.
-
-				if (index == 0) {
-					// if previous is NULL then it is inserted as the first node                    
-					if (previous == NULL) {
+		//Cycle through the nodes until we reach the end.
+		while (current != NULL) {						
+			
+				if (index == 0) {						// if index is 0 then insert.
+					                
+					if (previous == NULL) {				// if previous is NULL then it is inserted as the first node    
 
 						New->next = head;				// set next of New to head pointer.
 						head = New;						// Set head to new.
@@ -119,130 +126,164 @@ public:
 					}
 					return;
 				}
-				//Decrease pointer and set previous pointer to current, set current to the next pointer
-				index--;
+				
+				index--;								//Decrease pointer and set previous pointer to current, set current to the next pointer
 				previous = current;
 				current = current->next;
 		}            
-		// if index is 0 after the loop that means the node should be inserted at end.
-		if (index == 0) {                                
+		
+		if (index == 0) {								// if index is 0 that means the node should be inserted at end.
 			New->next = NULL;
-			// assign next of new node to null and next of previous to new node.
-			previous->next = New;
+			previous->next = New;						// assign next of new node to null and next of previous to new node.
 		}
 
 	}
-	// Delete(T value)
+
+
+	// Delete a node based on it's position in the list.
 	void Delete(T value) {
-		// initialize current and previous pointers.           
-		previous = NULL;
+		        
+		previous = NULL;								// initialize current and previous pointers.   
 		current = head;
 
-		// loop till current node pointer becomes NULL            
-		while (current != NULL) {
+		while (current != NULL) {						// loop till current node pointer becomes NULL            
+			    
+			if (current->data == value) {				// if the value is found in the current node.      
 
-			// if the value is found in the current node.          
-			if (current->data == value) {
+				Node<T>* temp;							// temp node used to hold the node for deletion.
+				
+				if (previous == NULL) {					// if previous is null, the first node must be deleted.
 
-				// temp node used to hold the node for deletion.
-				Node<T>* temp;
-				// if previous is null, the first node must be deleted.
-				if (previous == NULL) {
-
-					temp = head;					// set node to head
-					head = head->next;				// shift head to the next node
-					delete temp;					// delete temp
+					temp = head;						// set node to head
+					head = head->next;					// shift head to the next node
+					delete temp;						// delete temp
 
 				} else {
 
-					temp = current;					// assign current in temp
-					previous->next = current->next;	// shift next of previous to next of current.
-					delete temp;					// delete temp
+					temp = current;						// assign current in temp
+					previous->next = current->next;		// shift next of previous to next of current.
+					delete temp;						// delete temp
 
 				}
 				break;
 
 			}
 			             
-			previous = current;						// make previous point to current node
-			current = current->next;				// make current point to next of current node
+			previous = current;							// make previous point to current node
+			current = current->next;					// make current point to next of current node
 		}
 
 	}
+
+
 	//Find an element within the array
 	bool search (T value) {
-		current = head;	// Initialize current 
+		current = head;	
 	
 		while (current != NULL)
 		{
 			if (current->data == value) return true;
-
 			current = current->next;
 		}
 		return false;
 	}
+
+	//Search and return a fixed amount of items.
 	void search_adv(T value) {
-		current = head;	//Initalize current
+		current = head;					
 		bool present = false;
 		int index = 0,counter = 0;
-		int ind_count[20] = { 0 };		//Created a fixed array for now, would be using a vector instead.
-		while (current != NULL) {
+		int res_size = 20;
+		int ind_count[res_size] = { 0 };						//Created a fixed array for storing found values, should be using a vector instead.
+
+		while (current != NULL) {						
 			if (current->data == value) {
-				//int *ind_count = new int[index + 1];
 				ind_count[counter] = index;
-				counter++;
-				present = true;
+				counter++;										//Increment if an index was found 
+				present = true;									//Check condition for the statement below.
+
 			}
 			index++;
-			current = current->next;		//Navigate to next pointer
+			current = current->next;
 		}
 		
 		if (present) {
 			std::cout << " Found " << value << " at index ";
-			for (int i = 0; i < counter; i++) {
+			for (int i = 0; i < counter && i <res_size ; i++) {	//Added a temporary double condition for ind_count overflow.
 				std::cout << ind_count[i];
-				if (counter - i == 1) { std::cout << ".\n"; }
+				if (counter - i == 1) std::cout << ".\n";
 				else std::cout << ", ";
 			}
-			//delete[] ind_count;			//Attempted use of dynamic array.
+			
 		}
-		else std::cout << "\""<< value << "\" was not found in the list!!\n";
+		else std::cout << "\"" <<
+			value << "\" was not found in the list!!\n";
+
 	}
 
+	//Count the values to produce the linked list size.
+	int count() {											
+		current = head;
+		int counter = 0;
+		while (current != NULL){
+			counter++;
+			current = current->next;
+
+		}
+		return counter;
+	
+	}
+
+	//Sort the linked list
 	void sort() {
 		current = head;
 		previous = NULL;
 		int temp;
-		if (head == NULL) {
+		if (head == NULL) {									//"Don't do anything"
 			return;
 		}
 		else {
 			
 			while (current != NULL) {
-				previous = current->next; //Sets previous to next pointer
+
+				previous = current->next;					//Sets previous to next pointer
+
 				while (previous != NULL) {
-					if (current->data > previous->data) {
+					if (current->data > previous->data) {	//If the current value is larger than previous value, swap contents.
 						temp = current->data;
 						current->data = previous->data;
 						previous->data = temp;
 					}
-					previous = previous->next;
+					previous = previous->next;				//Otherwise move the previous node to the next node.
 				}
-				current = current->next;
+				current = current->next;					//Move the pointer to the next node
 			}
 			
 		}
 	}
-	//Print contents of the linked list.
-	void print() {
-		            
-		current = head;								//set current node pointer
 
-		// loop until end of list.
-		do  {
+	//Returns the index position of a specific element.
+	int index(int val) {									
+		current = head;
+		int x = 0;
+		while (current != NULL ){
+
+			if (x == val) return current->data;				//return the contents of the node once x matches the index;
+			x++;											
+			current = current->next;						
+
+		}
+		return NULL;										//If the counter doesn't reach the index, return NULL.
+	
+	}
+
+	//Print contents of the linked list.            
+	void print() {											
+		current = head;										
+		do  {												
 			
-			std::cout << current->data << ' ';		// print data seperated by space.
-			current = current->next;				// set the current pointer to the next pointer.
+			std::cout << current->data << ' ';				// print data seperated by space.
+			current = current->next;						// set the current pointer to the next pointer.
 
 		} while (current != NULL);
 
