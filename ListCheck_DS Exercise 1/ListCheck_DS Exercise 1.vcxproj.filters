@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Indexer.cpp">
+    <ClCompile Include="Intersections.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Intersections.cpp">
+    <ClCompile Include="Indexer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

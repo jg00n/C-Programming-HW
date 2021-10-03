@@ -21,7 +21,7 @@ int main() {
 		}
 	
 	}
-
+	//One for loop is has a time complexity of O(N).
 	return 0;
 
 }
