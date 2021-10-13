@@ -94,7 +94,7 @@ public:
 			append(values[x]);
 		}
 		//Big O notation of O(N).
-		//Encampsulation of the previous function leads to O(N^2).
+		//Encapsulation of the previous function leads to O(N^2).
 	}
 
 	//insert a value into the list with a specified index (value, index).
@@ -276,6 +276,15 @@ public:
 		}
 		return NULL;										//If the counter doesn't reach the index, return NULL.
 		//Big O notation of O(N).
+	}
+
+	//Get to the end of the list.
+	int end() {
+		current = head;
+		while (current != NULL) {
+			current = current->next;
+		}
+		return current->data;
 	}
 
 	//Print contents of the linked list.            

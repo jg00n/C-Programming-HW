@@ -7,8 +7,8 @@
 *	mainly with anything that uses cin / cout.
 * 
 *	Currently a WIP
-*	version 0.3.1
-*	9/28/2021
+*	version 0.3.2
+*	10/04/2021
 * 
 *   Honor Code: "I have neither given nor received unauthorized aid in completing this work,
 *   nor have I presented someone else's work as my own."
@@ -82,7 +82,10 @@ public:
 		//Spit out 1 message with newline.
 		std::cout << message << "\n";
 	}	
-
+	void Show(std::string message, std::string message2) const {
+		//Spit out a concatenated message with newline
+		std::cout << message << message2 << "\n";
+	}
 	template <class Type>
 	void Show(std::string message, Type &value , char optional =  ' ') const{
 		//Spit out message, value with newline.
@@ -136,6 +139,21 @@ public:
 		exit(EXIT_FAILURE);
 	}
 
+	//Quick continue prompt (only returns true or false.)
+	bool Question(const std::string message = "continue") {
+		char input =' ';
+
+		do {
+			std::cout << "Do you wish to " << message << "?(Y/N):\n";
+			std::cin >> input;
+			clear();
+			input = tolower(input);
+			if (input == 'y') return true;
+			if (input == 'n') return false;
+			
+		}while (input != 'y' && input != 'n');
+		return NULL;
+	}
 	//Prompt Overloads (input with reference modification).
 	template <class Type>
 	void Prompt(Type &input, const std::string message, bool longer) {

@@ -1,1 +1,2 @@
 C:\Users\Computer-WS\source\repos\ListCheck_DS Exercise 1\Debug\ListCheck_DS Exercise 1.exe
+C:\Users\Computer-WS\source\repos\C-Programming-HW\ListCheck_DS Exercise 1\Debug\ListCheck_DS Exercise 1.exe

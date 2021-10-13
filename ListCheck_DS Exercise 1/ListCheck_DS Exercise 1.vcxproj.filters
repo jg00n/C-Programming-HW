@@ -15,15 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Intersections.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Indexer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Indexer.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersections.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C_Shared_Content-Repository\Include\LList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\C_Shared_Content-Repository\Include\IO_text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
