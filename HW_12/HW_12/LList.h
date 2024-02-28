@@ -193,7 +193,7 @@ public:
 		current = head;					
 		bool present = false;
 		int index = 0,counter = 0;
-		int res_size = 20;
+		static const int res_size = 20;
 		int ind_count[res_size] = { 0 };						//Created a fixed array for storing found values, should be using a vector instead.
 
 		while (current != NULL) {						
